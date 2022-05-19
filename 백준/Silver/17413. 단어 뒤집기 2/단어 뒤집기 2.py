@@ -1,25 +1,24 @@
-import sys
-from sys import stdin
-
-word = list(stdin.readline().rstrip())
-
-i = 0
-start = 0
-
-while i < len(word):
-    if word[i] == "<":
-        i += 1
-        while word[i] != ">":
-            i += 1
-        i += 1
-    elif word[i].isalnum():
-        start = i
-        while i  <len(word) and word[i].isalnum():
-            i+=1
-        tmp = word[start:i]
-        tmp.reverse()
-        word[start:i] =tmp
+ans = ""
+tag = False
+stack = ""
+for i in input():
+    if i == "<":
+        tag = True
+        ans += stack[::-1]
+        stack = ""
+        ans += i
+        continue
+    elif i == ">":
+        tag = False
+        ans += i
+        continue
+    elif i == " ":
+        ans += stack[::-1] + " "
+        stack = ""
+        continue
+        
+    if tag:
+        ans += i
     else:
-        i += 1
-print("".join(word))
-
+        stack += i
+print(ans+stack[::-1])
