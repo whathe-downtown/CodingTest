@@ -1,12 +1,12 @@
-from sys import stdin
+if __name__ == '__main__':
+    n = int(input())
 
-N = int(input())
-
-while True:
-    if len(str(N)) == str(N).count('4') + str(N).count('7'):
-        
-        print(N)
-        
-        break
-        
-    N -= 1
+    while True:
+        flag = True
+        for i in str(n):
+            if i != '4' and i != '7':
+                flag = False
+                n -= 1
+        if flag:
+            print(n)
+            break
