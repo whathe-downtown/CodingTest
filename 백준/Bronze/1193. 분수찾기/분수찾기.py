@@ -1,15 +1,16 @@
-X = int(input())
+x= int(input())
 
 line = 1
-while X > line:
-    X -= line
+
+while x>line:
+    x -= line
     line += 1
 
 if line % 2 == 0:
-    a = X
-    b = line - X + 1
-else:
-    a = line - X + 1
-    b = X
+    a= x
+    b= line - x +1
 
-print(a, '/', b, sep='')
+else:
+    a= line -x +1
+    b= x
+print(a,'/',b, sep='')
