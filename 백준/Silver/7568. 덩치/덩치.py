@@ -1,8 +1,9 @@
+from sys import stdin
 num = int(input())
 
 weight_list = []
 for i in range(num):
-    player = list(map(int,input().split()))
+    player = list(map(int,stdin.readline().split()))
     weight_list.append(player)
 
 for i in weight_list:
