@@ -1,18 +1,13 @@
 from sys import stdin
-
-a, b = map(int,input().split())
-array = []
-count = 0
+a, b= map(int,input().split())
+arr = []
 for i in range(a):
-    put = int(stdin.readline().rstrip())
-    array.append(put)
+    coin = int(stdin.readline())
+    arr.append(coin)
 
-array.sort(reverse= True)
-for i in array:
-    if b >= i:
-        count += b // i
-        b %= i
-        if i <= 0:
-            break
-
+_arr = arr[::-1]
+count = 0
+for i in _arr:
+    count += b // i
+    b %= i
 print(count)
