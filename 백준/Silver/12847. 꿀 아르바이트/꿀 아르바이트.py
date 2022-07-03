@@ -1,15 +1,14 @@
 from sys import stdin
+
 input= stdin.readline
-N, M = map(int,input().split()) # N =5, M= 3
-number_list = list(map(int,input().split()))
+N,M = map(int,input().split())
+num_list = list(map(int,input().split()))
 
 step = M
-window = sum(number_list[:step])
-answer= window
-for i in range(step, N):
-    window += (number_list[i] - number_list[i-step])
-    answer = max(answer, window) # 둘 중 max 값을 비교 
+window = sum(num_list[:step])
+answer = window
 
+for i in range(step, N):
+    window += (num_list[i] - num_list[i - step])
+    answer = max(answer, window)
 print(answer)
-    
-    
