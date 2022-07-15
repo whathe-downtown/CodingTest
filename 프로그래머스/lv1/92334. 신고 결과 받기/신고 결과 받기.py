@@ -1,13 +1,26 @@
+from collections import defaultdict
 def solution(id_list, report, k):
-    answer = [0] * len(id_list) # [0,0,0,0]
-    reports = {x: 0 for x in id_list}
-    #{'muxi: 0','frodo':0,'apeach':0,'neo': 0}
+    answer = []
     
-    for r in set(report):
-        reports[r.split()[1]] += 1
+    # 중복 신고 제거 
+    report = set(report)
+    # 신고별 id 저장
+    user = defaultdict(set) 
     
-    for r in set(report):
-        if reports[r.split()[1]] >= k:
-            answer[id_list.index(r.split()[0])] += 1
+    # 신고당한 횟수 저장
+    cnt = defaultdict(int)
     
+    for r in report:
+        a, b = r.split()
+        user[a].add(b)
+        
+        cnt[b] += 1
+        
+    for i in id_list:
+        result =0
+        
+        for u in user[i]:
+            if cnt[u] >= k:
+                result += 1
+        answer.append(result)
     return answer
